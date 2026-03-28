@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradise Kitchen - Farm-to-Table Middle Eastern Cuisine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5016;
+            --gold: #d4af37;
+            --burgundy: #6b2c2c;
+            --terracotta: #c85a3a;
+            --cream: #f5f1e8;
+            --white: #ffffff;
+            --dark-text: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-placeholder {
+            background-color: var(--cream);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            color: var(--cream);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            color: var(--gold);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--terracotta);
+            color: var(--white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.7)), url('placeholder-hero.jpg') center/cover;
+            color: var(--white);
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .halal-badge {
+            display: inline-block;
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 3rem 0;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* WELCOME MESSAGE */
+        .welcome {
+            background-color: var(--cream);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .welcome p {
+            font-size: 1.1rem;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .farm-link {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--primary-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .farm-link:hover {
+            background-color: var(--terracotta);
+            color: var(--white);
+        }
+
+        /* TASTE FACTS */
+        .taste-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .fact-card {
+            background-color: var(--gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 5px solid var(--terracotta);
+            transition: transform 0.3s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card p {
+            color: var(--primary-green);
+            font-weight: 500;
+        }
+
+        /* FEATURED DISHES */
+        .featured-dishes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .dish-card {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .dish-image {
+            background-color: #e0e0e0;
+            padding: 3rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .dish-content {
+            padding: 1.5rem;
+        }
+
+        .dish-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .dish-price {
+            font-size: 1.5rem;
+            color: var(--terracotta);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .dish-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--burgundy);
+        }
+
+        /* NOTIFICATION BADGE */
+        .notice-badge {
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: 500;
+        }
+
+        /* BUTTONS */
+        .btn {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--burgundy);
+        }
+
+        .btn-secondary {
+            background-color: var(--gold);
+            color: var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--terracotta);
+            color: var(--white);
+        }
+
+        /* MENU PAGE */
+        .menu-tabs {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-tab {
+            background-color: var(--cream);
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .menu-tab:hover,
+        .menu-tab.active {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        .menu-category {
+            display: none;
+        }
+
+        .menu-category.active {
+            display: block;
+        }
+
+        /* CART PAGE */
+        .cart-items {
+            margin: 2rem 0;
+        }
+
+        .cart-item {
+            background-color: var(--cream);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-details h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-summary {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: right;
+            margin: 2rem 0;
+        }
+
+        .cart-summary p {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* FORM */
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: var(--cream);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--primary-green);
+            color: var(--cream);
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--cream);
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gold);
+            color: var(--primary-green);
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--terracotta);
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 0.9rem;
+        }
+
+        .footer-halal {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .footer-badge {
+            display: inline-block;
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                gap: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .menu-tabs {
+                gap: 0.5rem;
+            }
+
+            .menu-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* CHEF'S SPECIAL BADGE */
+        .chef-special {
+            position: relative;
+        }
+
+        .chef-special::before {
+            content: "CHEF'S SPECIAL";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* PAGE SPECIFIC */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo-placeholder">🍽️ Logo Placeholder</div>
+    <nav>
+        <a href="#home" onclick="showPage('home')">Home</a>
+        <a href="#menu" onclick="showPage('menu')">Menu</a>
+        <a href="#about" onclick="showPage('about')">About Us</a>
+        <a href="#contact" onclick="showPage('contact')">Contact</a>
+    </nav>
+    <div class="cart-icon" onclick="showPage('cart')">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+</header>
+
+<!-- HOME PAGE -->
+<div id="home" class="page-section active">
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Paradise Kitchen</h1>
+        <p>Fresh from Our Farm to Your Table</p>
+        <div class="halal-badge">✓ 100% Halal-Certified</div>
+        <p style="font-size: 1.1rem;">Authentic Middle Eastern Cuisine</p>
+    </section>
+
+    <!-- WELCOME MESSAGE -->
+    <section class="container">
+        <div class="welcome">
+            <h2>Welcome to Paradise Kitchen</h2>
+            <p>Paradise Kitchen is the culinary heart of Paradise Farming.co. Every dish is crafted with ingredients picked fresh from our farm that morning. We honor traditional Middle Eastern recipes passed down through generations, combined with the finest farm-to-table ingredients.</p>
+            <a href="#" onclick="showPage('about')" class="farm-link">Learn Our Story</a>
+            <div style="margin-top: 1.5rem;">
+                <p style="font-weight: 600; color: var(--primary-green);">Our sister farm:</p>
+                <a href="#" class="farm-link" style="background-color: var(--terracotta); color: var(--white);">Visit Paradise Farming.co</a>
+            </div>
+        </div>
+
+        <!-- TASTE FACTS -->
+        <h2>Kitchen Secrets</h2>
+        <div class="taste-facts">
+            <div class="fact-card">
+                <p>🌾 Our pita is hand-stretched and baked fresh every morning — no machines, no shortcuts!</p>
+            </div>
+            <div class="fact-card">
+                <p>🫒 We press over 100 lbs of olives weekly for our house olive oil.</p>
+            </div>
+            <div class="fact-card">
+                <p>🌿 Our sumac is wild-harvested and adds a tangy kick without any lemon.</p>
+            </div>
+            <div class="fact-card">
+                <p>🌳 Our olive trees were planted by our founders in 1985 — heritage in every drop.</p>
+            </div>
+        </div>
+
+        <!-- FEATURED DISHES -->
+        <h2>Featured Dishes</h2>
+        <div class="featured-dishes">
+            <div class="dish-card chef-special">
+                <div class="dish-image">🍖 Chicken Shawarma</div>
+                <div class="dish-content">
+                    <div class="dish-name">Chicken Shawarma</div>
+                    <div class="dish-price">$12.99</div>
+                    <div class="dish-description">Marinated in our farm spices, served with tahini and fresh vegetables.</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Chicken Shawarma', 12.99)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <div class="dish-image">🫘 Hummus Mutabbal</div>
+                <div class="dish-content">
+                    <div class="dish-name">Hummus Mutabbal</div>
+                    <div class="dish-price">$8.99</div>
+                    <div class="dish-description">Creamy chickpeas with tahini from our farm, topped with olive oil and pine nuts.</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Hummus Mutabbal', 8.99)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="dish-card">
+                <div class="dish-image">🍽️ Mansaf</div>
+                <div class="dish-content">
+                    <div class="dish-name">Mansaf (Lamb)</div>
+                    <div class="dish-price">$16.99</div>
+                    <div class="dish-description">Traditional Jordanian lamb in tangy yogurt sauce with fresh herbs from the farm.</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Mansaf', 16.99)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTICE BADGE -->
+        <div class="notice-badge">
+            📦 Available for Pickup | 🚚 Local Delivery | 🍽️ Dine-In Coming Soon
+        </div>
+
+        <!-- COMING SOON -->
+        <div style="text-align: center; background-color: var(--cream); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Coming Soon</h3>
+            <p><strong>Paradise Rewards</strong> — Earn points on every order! Stay tuned.</p>
+        </div>
+    </section>
+</div>
+
+<!-- MENU PAGE -->
+<div id="menu" class="page-section">
+    <section class="container">
+        <h2>Our Menu</h2>
+
+        <!-- MENU TABS -->
+        <div class="menu-tabs">
+            <button class="menu-tab active" onclick="switchCategory('appetizers')">Appetizers & Mezze</button>
+            <button class="menu-tab" onclick="switchCategory('kebabs')">Grill & Kebabs</button>
+            <button class="menu-tab" onclick="switchCategory('mains')">Main Plates</button>
+            <button class="menu-tab" onclick="switchCategory('salads')">Fresh Salads</button>
+            <button class="menu-tab" onclick="switchCategory('sides')">Sides & Breads</button>
+            <button class="menu-tab" onclick="switchCategory('desserts')">Desserts</button>
+            <button class="menu-tab" onclick="switchCategory('beverages')">Beverages</button>
+        </div>
+
+        <!-- APPETIZERS -->
+        <div id="appetizers" class="menu-category active">
+            <div class="featured-dishes">
+                <div class="dish-card">
+                    <div class="dish-image">🫘 Hummus</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Classic Hummus</div>
+                        <div class="dish-price">$7.99</div>
+                        <div class="dish-description">Chickpeas, tahini, lemon, garlic. Farm-fresh!</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Classic Hummus', 7.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🆚 Baba Ganoush</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Baba Ganoush</div>
+                        <div class="dish-price">$8.49</div>
+                        <div class="dish-description">Roasted eggplant with tahini and spices.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Baba Ganoush', 8.49)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🫒 Falafel</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Falafel (6 pcs)</div>
+                        <div class="dish-price">$6.99</div>
+                        <div class="dish-description">Crispy chickpea fritters. Vegetarian & Vegan.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Falafel', 6.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KEBABS -->
+        <div id="kebabs" class="menu-category">
+            <div class="featured-dishes">
+                <div class="dish-card chef-special">
+                    <div class="dish-image">🍖 Kebab</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Beef Kebab (2 skewers)</div>
+                        <div class="dish-price">$15.99</div>
+                        <div class="dish-description">Marinated farm beef, grilled to perfection.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Beef Kebab', 15.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🐔 Shawarma</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Chicken Shawarma (2 skewers)</div>
+                        <div class="dish-price">$12.99</div>
+                        <div class="dish-description">Spiced chicken, fresh herbs, tahini sauce.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Chicken Shawarma', 12.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🐑 Lamb</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Lamb Chops (4 pcs)</div>
+                        <div class="dish-price">$18.99</div>
+                        <div class="dish-description">Tender lamb, seasoned with farm herbs.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Lamb Chops', 18.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAINS -->
+        <div id="mains" class="menu-category">
+            <div class="featured-dishes">
+                <div class="dish-card">
+                    <div class="dish-image">🍲 Mansaf</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Mansaf (Lamb)</div>
+                        <div class="dish-price">$16.99</div>
+                        <div class="dish-description">Traditional Jordanian lamb in yogurt sauce.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Mansaf', 16.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🍚 Maqluba</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Maqluba (Lamb & Rice)</div>
+                        <div class="dish-price">$14.99</div>
+                        <div class="dish-description">Upside-down rice with lamb and vegetables.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Maqluba', 14.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🍛 Biryani</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Chicken Biryani</div>
+                        <div class="dish-price">$13.99</div>
+                        <div class="dish-description">Fragrant rice with spiced chicken.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Chicken Biryani', 13.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SALADS -->
+        <div id="salads" class="menu-category">
+            <div class="featured-dishes">
+                <div class="dish-card">
+                    <div class="dish-image">🥗 Salad</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Fattoush Salad</div>
+                        <div class="dish-price">$9.99</div>
+                        <div class="dish-description">Fresh greens, tomatoes, cucumbers, pita chips. Vegetarian.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Fattoush Salad', 9.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🌿 Tabouleh</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Tabouleh</div>
+                        <div class="dish-price">$8.99</div>
+                        <div class="dish-description">Parsley, bulgur, tomatoes, olive oil. Vegan-friendly.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Tabouleh', 8.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🫒 Greek Salad</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Greek Salad</div>
+                        <div class="dish-price">$9.49</div>
+                        <div class="dish-description">Feta, olives, cucumbers, tomatoes.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Greek Salad', 9.49)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDES & BREADS -->
+        <div id="sides" class="menu-category">
+            <div class="featured-dishes">
+                <div class="dish-card">
+                    <div class="dish-image">🫓 Pita</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Fresh Pita Bread (4 pcs)</div>
+                        <div class="dish-price">$3.99</div>
+                        <div class="dish-description">Baked fresh this morning!</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Fresh Pita Bread', 3.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🍚 Basmati Rice</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Basmati Rice</div>
+                        <div class="dish-price">$3.49</div>
+                        <div class="dish-description">Fluffy, fragrant rice.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Basmati Rice', 3.49)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🧄 Garlic Sauce</div>
+                    <div class="dish-content">
+                        <div class="dish-name">House Garlic Sauce</div>
+                        <div class="dish-price">$2.99</div>
+                        <div class="dish-description">Creamy, pungent, irresistible.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Garlic Sauce', 2.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESSERTS -->
+        <div id="desserts" class="menu-category">
+            <div class="featured-dishes">
+                <div class="dish-card chef-special">
+                    <div class="dish-image">🥜 Baklava</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Baklava (3 pcs)</div>
+                        <div class="dish-price">$6.99</div>
+                        <div class="dish-description">Phyllo, nuts, honey. Pure indulgence!</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Baklava', 6.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🧀 Knafeh</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Knafeh</div>
+                        <div class="dish-price">$7.49</div>
+                        <div class="dish-description">Cheese, phyllo, golden syrup. Warm and gooey.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Knafeh', 7.49)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🍯 Halawet el Jibn</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Halawet el Jibn</div>
+                        <div class="dish-price">$5.99</div>
+                        <div class="dish-description">Cheese-based dessert with pistachios.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Halawet el Jibn', 5.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BEVERAGES -->
+        <div id="beverages" class="menu-category">
+            <div class="featured-dishes">
+                <div class="dish-card">
+                    <div class="dish-image">🥛 Ayran</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Ayran (Yogurt Drink)</div>
+                        <div class="dish-price">$3.49</div>
+                        <div class="dish-description">Tangy, refreshing, farm-fresh yogurt.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Ayran', 3.49)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🍓 Jallab</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Jallab (Grape Molasses)</div>
+                        <div class="dish-price">$2.99</div>
+                        <div class="dish-description">Sweet, fruity, traditional Middle Eastern drink.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Jallab', 2.99)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="dish-card">
+                    <div class="dish-image">🍋 Mint Lemonade</div>
+                    <div class="dish-content">
+                        <div class="dish-name">Fresh Mint Lemonade</div>
+                        <div class="dish-price">$2.99</div>
+                        <div class="dish-description">Fresh mint from the farm, cold and crisp.</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('Mint Lemonade', 2.99)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="notice-badge">
+            📦 Orders available for Pickup or Local Delivery
+        </div>
+    </section>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="about" class="page-section">
+    <section class="container">
+        <h2>About Paradise Kitchen</h2>
+
+        <div class="welcome">
+            <h3>Our Story</h3>
+            <p>Paradise Kitchen was born from a simple vision: to bring authentic Middle Eastern cuisine to Virginia, rooted in family tradition and a passion for fresh, honest food.</p>
+            <p>We are the culinary extension of Paradise Farming.co. Every ingredient that goes into our kitchen comes from our farm — picked fresh that morning, prepared with care, and served with pride. From the eggs in our hummus to the lamb on our grill, we control every step of the journey.</p>
+        </div>
+
+        <div style="background-color: var(--cream); padding: 2rem; border-radius: 8px; margin: 2rem 0; text-align: center;">
+            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Halal Certification Commitment</h3>
+            <p>We are <strong>100% Halal-certified</strong> and deeply committed to ethical sourcing and preparation. Every decision we make honors Islamic principles and our customers' values.</p>
+            <div class="halal-badge" style="font-size: 1.2rem;">✓ 100% Halal-Certified</div>
+        </div>
+
+        <div style="margin: 2rem 0;">
+            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">The Farm-to-Table Connection</h3>
+            <p>Visit <a href="#" class="farm-link" style="display: inline;">Paradise Farming.co</a> to see where our ingredients come from. We're proud to serve our community with products grown in Virginia soil.</p>
+        </div>
+
+        <div style="background-color: var(--cream); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Our Kitchen Philosophy</h3>
+            <ul style="list-style-position: inside; line-height: 2;">
+                <li>🌾 <strong>Fresh:</strong> All ingredients sourced from Paradise Farming.co</li>
+                <li>🥘 <strong>Authentic:</strong> Traditional Middle Eastern recipes passed down through generations</li>
+                <li>🤝 <strong>Ethical:</strong> Halal-certified and committed to transparency</li>
+                <li>👨‍👩‍👧‍👦 <strong>Communal:</strong> Food that brings families and friends together</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="contact" class="page-section">
+    <section class="container">
+        <h2>Contact Paradise Kitchen</h2>
+
+        <div style="background-color: var(--cream); padding: 2rem; border-radius: 8px; margin: 2rem 0; text-align: center;">
+            <h3 style="color: var(--primary-green);">Visit Us</h3>
+            <p><strong>Location:</strong> Paradise Kitchen, Virginia</p>
+            <p><strong>Phone:</strong> (555) 123-4567</p>
+            <p><strong>Email:</strong> hello@paradisekitchen.com</p>
+            <p style="margin-top: 1rem;"><strong>Hours:</strong><br>Tuesday – Sunday: 11:00 AM – 9:00 PM<br>Monday: Closed</p>
+        </div>
+
+        <!-- MAP PLACEHOLDER -->
+        <div style="background-color: #e0e0e0; padding: 2rem; border-radius: 8px; margin: 2rem 0; text-align: center;">
+            <p style="color: #999;">📍 Google Maps Placeholder — Insert your location here</p>
+        </div>
+
+        <!-- ORDERING OPTIONS -->
+        <div style="background-color: var(--cream); padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+            <h3 style="color: var(--primary-green);">How to Order</h3>
+            <p><strong>🏪 In-Person Pickup:</strong> Visit us at our location during operating hours.</p>
+            <p><strong>🚚 Local Delivery:</strong> Contact us for delivery areas and timing options.</p>
+            <p><strong>📞 Phone Orders:</strong> Call (555) 123-4567 to place an order.</p>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! This is a demo. We will contact you at the provided information.');">
+            <h3 style="color: var(--primary-green); margin-bottom: 1.5rem;">Send Us a Message</h3>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="btn" style="margin-top: 1rem; width: 100%;">Send Message</button>
+        </form>
+    </section>
+</div>
+
+<!-- CART PAGE -->
+<div id="cart" class="page-section">
+    <section class="container">
+        <h2>Your Cart</h2>
+
+        <div id="emptyCart" style="text-align: center; padding: 2rem;">
+            <p>Your cart is empty. Start adding delicious dishes!</p>
+            <button class="btn" onclick="showPage('menu')">Browse Menu</button>
+        </div>
+
+        <div id="cartContent" style="display: none;">
+            <div class="notice-badge">
+                📦 Orders available for pickup or local delivery. Contact us for delivery areas and timing.
+            </div>
+
+            <div class="cart-items" id="cartItems"></div>
+
+            <div class="cart-summary">
+                <p>Subtotal: $<span id="subtotal">0.00</span></p>
+                <p style="font-size: 1.4rem; margin-top: 1rem;">Total: $<span id="total">0.00</span></p>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="btn" onclick="proceedToOrder()">Proceed to Order</button>
+                <button class="btn btn-secondary" onclick="showPage('menu')" style="margin-left: 1rem;">Continue Shopping</button>
+                <button class="btn" onclick="clearCart()" style="background-color: #999; margin-left: 1rem;">Clear Cart</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Paradise Kitchen</h3>
+            <p>Farm-to-table Middle Eastern cuisine from Virginia.</p>
+            <p><strong>Phone:</strong> (555) 123-4567</p>
+            <p><strong>Email:</strong> hello@paradisekitchen.com</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('menu')">Menu</a>
+            <a href="#" onclick="showPage('about')">About Us</a>
+            <a href="#" onclick="showPage('contact')">Contact</a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Sister Farm</h3>
+            <p>Paradise Kitchen partners with:</p>
+            <a href="#">Paradise Farming.co</a>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Visit our farm for fresh produce and products.</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://instagram.com/paradisekitchen" target="_blank" title="Instagram">📷</a>
+                <a href="https://facebook.com/paradisekitchen" target="_blank" title="Facebook">f</a>
+                <a href="https://twitter.com/paradisekitchen" target="_blank" title="Twitter">𝕏</a>
+                <a href="https://tiktok.com/@paradisekitchen" target="_blank" title="TikTok">🎵</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-halal">
+        <div class="footer-badge">✓ 100% Halal-Certified</div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2024 Paradise Kitchen. All rights reserved. | Paradise Farming.co Sister Company</p>
+    </div>
+</footer>
+
+<script>
+    // CART FUNCTIONALITY
+    let cart = [];
+
+    function addToCart(name, price) {
+        const item = cart.find(i => i.name === name);
+        if (item) {
+            item.quantity += 1;
+        } else {
+            cart.push({ name, price, quantity: 1 });
+        }
+        updateCartCount();
+        alert(`${name} added to cart!`);
+    }
+
+    function updateCartCount() {
+        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cartCount').textContent = count;
+    }
+
+    function updateCartDisplay() {
+        const cartContent = document.getElementById('cartContent');
+        const emptyCart = document.getElementById('emptyCart');
+        const cartItems = document.getElementById('cartItems');
+
+        if (cart.length === 0) {
+            cartContent.style.display = 'none';
+            emptyCart.style.display = 'block';
+        } else {
+            cartContent.style.display = 'block';
+            emptyCart.style.display = 'none';
+
+            cartItems.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p>$${item.price.toFixed(2)} x <input type="number" min="1" value="${item.quantity}" style="width: 50px; padding: 0.3rem;" onchange="updateQuantity(${index}, this.value)"></p>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-weight: bold; margin-bottom: 0.5rem;">$${itemTotal.toFixed(2)}</p>
+                            <button class="btn" onclick="removeFromCart(${index})" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+            document.getElementById('total').textContent = subtotal.toFixed(2);
+        }
+    }
+
+    function updateQuantity(index, quantity) {
+        cart[index].quantity = Math.max(1, parseInt(quantity) || 1);
+        updateCartCount();
+        updateCartDisplay();
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartCount();
+        updateCartDisplay();
+    }
+
+    function clearCart() {
+        if (confirm('Are you sure you want to clear your cart?')) {
+            cart = [];
+            updateCartCount();
+            updateCartDisplay();
+        }
+    }
+
+    function proceedToOrder() {
+        alert('Thank you for your order!\n\nYour Cart Total: $' + document.getElementById('total').textContent + '\n\nThis is a demo. To complete your order, please:\n✓ Call us at (555) 123-4567\n✓ Visit us in person\n✓ Select your preferred pickup or delivery option');
+    }
+
+    // PAGE NAVIGATION
+    function showPage(pageId) {
+        const sections = document.querySelectorAll('.page-section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+
+        if (pageId === 'cart') {
+            updateCartDisplay();
+        }
+
+        window.scrollTo(0, 0);
+    }
+
+    // MENU CATEGORY SWITCHING
+    function switchCategory(categoryId) {
+        const categories = document.querySelectorAll('.menu-category');
+        const tabs = document.querySelectorAll('.menu-tab');
+
+        categories.forEach(cat => cat.classList.remove('active'));
+        tabs.forEach(tab => tab.classList.remove('active'));
+
+        document.getElementById(categoryId).classList.add('active');
+        event.target.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
